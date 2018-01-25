@@ -61,6 +61,130 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-FFmpeg学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/25/FFmpeg学习笔记/" class="article-date">
+  <time datetime="2018-01-25T07:53:35.000Z" itemprop="datePublished">2018-01-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/25/FFmpeg学习笔记/">FFmpeg学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#FFmpeg学习笔记（一）</p>
+<h2 id="1-编译FFmpeg"><a href="#1-编译FFmpeg" class="headerlink" title="1.编译FFmpeg"></a>1.编译FFmpeg</h2><ul>
+<li>下载FFmpeg源码</li>
+<li>下载Android NDK</li>
+<li>配置NDK</li>
+<li>修改编译后文件名格式（通过修改源码目录下的configure文件）</li>
+<li>编写编译脚本</li>
+<li>编译</li>
+</ul>
+<p>###需要注意的问题</p>
+<hr>
+<p>1.下载的NDK必须要对应自己机器的操作系统<br><a href="https://developer.android.com/ndk/downloads/older_releases.html" target="_blank" rel="noopener"><strong>下载链接</strong></a></p>
+<p>2.版本问题 <br><br>我编译成功的对应版本：<br><br>OS: MAC OS 10.12 <br><br>FFmpeg: 3.3.6 <br><br>NDK: 12b <br></p>
+<p>使用过版本为16的NDK尝试编译，会在cross-compile的时候报一个文件缺失的异常，之后尝试了低版本的ndk后，编译通过了。 <br></p>
+<p>3.脚本一定要正确<br><br>贴一个我成功编译的脚本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">NDK=/Users/om/android-ndk-r12b</span><br><span class="line">SYSROOT=$NDK/platforms/android-23/arch-arm</span><br><span class="line">TOOLCHAIN=$NDK/toolchains/arm-linux-androideabi-4.9/prebuilt/darwin-x86_64</span><br><span class="line"></span><br><span class="line">function build_one</span><br><span class="line">&#123;</span><br><span class="line">./configure \</span><br><span class="line">--prefix=$PREFIX \</span><br><span class="line">--enable-shared \</span><br><span class="line">--disable-static \</span><br><span class="line">--disable-doc \</span><br><span class="line">--disable-yasm \</span><br><span class="line">--disable-ffmpeg \</span><br><span class="line">--disable-ffplay \</span><br><span class="line">--disable-ffprobe \</span><br><span class="line">--disable-ffserver \</span><br><span class="line">--disable-avdevice \</span><br><span class="line">--disable-doc \</span><br><span class="line">--disable-symver \</span><br><span class="line">--cross-prefix=$TOOLCHAIN/bin/arm-linux-androideabi- \</span><br><span class="line">--target-os=linux \</span><br><span class="line">--arch=arm \</span><br><span class="line">--disable-cross-compile \</span><br><span class="line">--sysroot=$SYSROOT \</span><br><span class="line">--extra-cflags=&quot;-Os -fpic $ADDI_CFLAGS&quot; \</span><br><span class="line">--extra-ldflags=&quot;$ADDI_LDFLAGS&quot; \</span><br><span class="line">$ADDITIONAL_CONFIGURE_FLAG</span><br><span class="line">make clean</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line">&#125;</span><br><span class="line">CPU=arm</span><br><span class="line">PREFIX=$(pwd)/android/$CPU</span><br><span class="line">ADDI_CFLAGS=&quot;-marm&quot;</span><br><span class="line">build_one</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/25/FFmpeg学习笔记/" data-id="cjcu7cyis00013qlixfqtfy4o" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Android硬编码的学习和尝试" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/25/Android硬编码的学习和尝试/" class="article-date">
+  <time datetime="2018-01-25T07:52:01.000Z" itemprop="datePublished">2018-01-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/25/Android硬编码的学习和尝试/">Android硬编码的学习和尝试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Android硬件编解码的尝试和笔记"><a href="#Android硬件编解码的尝试和笔记" class="headerlink" title="Android硬件编解码的尝试和笔记"></a>Android硬件编解码的尝试和笔记</h1><p> <strong>视频数据的处理流程</strong></p>
+<p> <img src="video_handle_process.jpeg" alt=""></p>
+<p> <strong>解协议</strong></p>
+<p>解协议的作用，就是将流媒体协议的数据，解析为标准的相应的封装格式数据。视音频在网络上传播的时候，常常采用各种流媒体协议，例如HTTP，RTMP，或是MMS等等。这些协议在传输视音频数据的同时，也会传输一些信令数据。这些信令数据包括对播放的控制（播放，暂停，停止），或者对网络状态的描述等。解协议的过程中会去除掉信令数据而只保留视音频数据。例如，采用RTMP协议传输的数据，经过解协议操作后，输出FLV格式的数据。</p>
+<p> <strong>解封装</strong></p>
+<p>解封装的作用，就是将输入的封装格式的数据，分离成为音频流压缩编码数据和视频流压缩编码数据。封装格式种类很多，例如MP4，MKV，RMVB，TS，FLV，AVI等等，它的作用就是将已经压缩编码的视频数据和音频数据按照一定的格式放到一起。例如，FLV格式的数据，经过解封装操作后，输出H.264编码的视频码流和AAC编码的音频码流。</p>
+<p> <strong>解码</strong></p>
+<p> 解码的作用，就是将视频/音频压缩编码数据，解码成为非压缩的视频/音频原始数据。音频的压缩编码标准包含AAC，MP3，AC-3等等，视频的压缩编码标准则包含H.264，MPEG2，VC-1等等。解码是整个系统中最重要也是最复杂的一个环节。通过解码，压缩编码的视频数据输出成为非压缩的颜色数据，例如YUV420P，RGB等等；压缩编码的音频数据输出成为非压缩的音频抽样数据，例如PCM数据。</p>
+<p><strong>视音频同步</strong></p>
+<p>视音频同步的作用，就是根据解封装模块处理过程中获取到的参数信息，同步解码出来的视频和音频数据，并将视频音频数据送至系统的显卡和声卡播放出来。</p>
+<h3 id="一些基本的视频知识"><a href="#一些基本的视频知识" class="headerlink" title="一些基本的视频知识"></a>一些基本的视频知识</h3><ul>
+<li>码率 bit rate</li>
+<li>帧率 frame per second</li>
+<li>分辨率</li>
+</ul>
+<p>一篇值得参考的文章<a href="http://blog.csdn.net/xiangjai/article/details/44238005" target="_blank" rel="noopener">http://blog.csdn.net/xiangjai/article/details/44238005</a></p>
+<p>###Android中音视频处理两个比较重要的类<br><strong>1.MediaCodec:</strong>官方提供用于提供硬件接口编码的类库，可以用来访问底层媒体编解码器，即编码器/解码器的组件。 它是Android底层多媒体支持架构的一部分。<br></p>
+<p>MediaCodec可以处理的数据有以下三种类型：压缩数据、原始音频数据、原始视频数据。这三种类型的数据均可以利用ByteBuffers进行处理，但是对于原始视频数据应提供一个Surface以提高编解码器的性能。Surface直接使用native视频数据缓存，而没有映射或复制它们到ByteBuffers，因此，这种方式会更加高效。</p>
+<p>MediaCodec采用异步方式处理数据，并且使用了一组输入输出缓存（ByteBuffer）。通过请求一个空的输入缓存（ByteBuffer），向其中填充满数据并将它传递给编解码器处理。编解码器处理完这些数据并将处理结果输出至一个空的输出缓存（ByteBuffer）中。使用完输出缓存的数据之后，将其释放回编解码器：</p>
+<p><img src="mediacodec.png" alt=""></p>
+<center>基本原理</center>
+
+<p>MediaCodec的生命周期有三种状态：停止态-Stopped、执行态-Executing、释放态-Released，停止状态（Stopped）包括了三种子状态：未初始化（Uninitialized）、配置（Configured）、错误（Error）。执行状态（Executing）会经历三种子状态：刷新（Flushed）、运行（Running）、流结束（End-of-Stream）：</p>
+<p><img src="mediacodec_lifecircle.png" alt=""></p>
+<center>生命周期</center>
+
+<p><strong>MediaCodec通过设置MediaFormat提供的一些编码配置：</strong> <br></p>
+<ul>
+<li>尺寸</li>
+<li>颜色类型</li>
+<li>码率</li>
+<li>帧率</li>
+<li>关键帧间隔 等等</li>
+</ul>
+<p><strong>2.MediaMuxer和MediaExtractor:</strong></p>
+<p>MediaMuxer用于于多路复用基本流。 目前MediaMuxer支持MP4，Webm和3GP文件作为输出。MediaMuxer最多仅支持一个视频track和一个音频track</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/25/Android硬编码的学习和尝试/" data-id="cjcu7cyin00003qlisqqr2xjm" class="article-share-link">Teilen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-my-first-blog" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/01/16/my-first-blog/" class="article-date">
@@ -89,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/16/my-first-blog/" data-id="cjcu77ndf000126li1npk0cb8" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/16/my-first-blog/" data-id="cjcu7cyiw00033qlia7mvjbmj" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -134,7 +258,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/15/hello-world/" data-id="cjcu77ndb000026limda3svwa" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/15/hello-world/" data-id="cjcu7cyiv00023qlivlo726j8" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -173,6 +297,14 @@
     <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/01/25/FFmpeg学习笔记/">FFmpeg学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/25/Android硬编码的学习和尝试/">Android硬编码的学习和尝试</a>
+          </li>
         
           <li>
             <a href="/2018/01/16/my-first-blog/">my_first_blog</a>
