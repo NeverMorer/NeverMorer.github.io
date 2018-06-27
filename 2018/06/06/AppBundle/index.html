@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="#AppBundle ###1.Dynamic Delivery Split APKs Split APKs的收益在于将一个包含所用代码和资源文件的大体积的Apk拆解开来，根据用户的设备按需加载相应的代码和资源文件。 通过给GooglePlay提供配置参数和编译好的appbundle文件，GooglePlay会根据用户的设备下发适配用户手机的资源和模块，可区分的内容包括abi、屏幕分辨率、手机语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2018/06/06/AppBundle/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="#AppBundle ###1.Dynamic Delivery Split APKs Split APKs的收益在于将一个包含所用代码和资源文件的大体积的Apk拆解开来，根据用户的设备按需加载相应的代码和资源文件。 通过给GooglePlay提供配置参数和编译好的appbundle文件，GooglePlay会根据用户的设备下发适配用户手机的资源和模块，可区分的内容包括abi、屏幕分辨率、手机语言">
+<meta property="og:image" content="https://developer.android.com/images/app-bundle/apk_splits_tree-2x.png">
+<meta property="og:image" content="https://developer.android.com/images/app-bundle/aab_format-2x.png">
+<meta property="og:updated_time" content="2018-06-08T04:25:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="#AppBundle ###1.Dynamic Delivery Split APKs Split APKs的收益在于将一个包含所用代码和资源文件的大体积的Apk拆解开来，根据用户的设备按需加载相应的代码和资源文件。 通过给GooglePlay提供配置参数和编译好的appbundle文件，GooglePlay会根据用户的设备下发适配用户手机的资源和模块，可区分的内容包括abi、屏幕分辨率、手机语言">
+<meta name="twitter:image" content="https://developer.android.com/images/app-bundle/apk_splits_tree-2x.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-AppBundle" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/06/AppBundle/" class="article-date">
+  <time datetime="2018-06-06T15:56:32.000Z" itemprop="datePublished">2018-06-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#AppBundle</p>
+<p>###1.Dynamic Delivery Split APKs</p>
+<p>Split APKs的收益在于将一个包含所用代码和资源文件的大体积的Apk拆解开来，根据用户的设备按需加载相应的代码和资源文件。</p>
+<p>通过给GooglePlay提供配置参数和编译好的appbundle文件，GooglePlay会根据用户的设备下发适配用户手机的资源和模块，可区分的内容包括abi、屏幕分辨率、手机语言环境等。</p>
+<p><strong>支持API21以上的设备</strong></p>
+<p>Split APKs大致分为如下：</p>
+<ul>
+<li><strong>Base APK</strong>: 包含了App基本功能和通用模块的代码和资源，GooglePlay会根据App的主模块生成它，并在用户下载的时候首先下发。</li>
+<li><strong>Configuration APKs</strong>: 每一个Config APKs包含某一种CPU类型的native依赖，某一种语言资源包，和某一种像素密度下的资源文件。当用户下载的时候，会根据用户的设备信息选择一个匹配的Config APKs下载。</li>
+<li><strong>Dynaic feature APKs</strong>: 提供了一些非所有用户必须的功能模块的动态加载，以功能module为基础，在用户使用的时候，动态安装。</li>
+</ul>
+<p><img src="https://developer.android.com/images/app-bundle/apk_splits_tree-2x.png" alt="AppBundle"></p>
+<p><strong>如何让App支持Google Dynamic Delivery</strong></p>
+<p>首先，需要用户去构建一个包含所有代码和资源文件的实体，将打包和签名的过程交给GooglePlay，GP会使用你的app bundle去根据用户的设备信息，仅将适配的代码和资源进行打包并进行签名后下发给用户。</p>
+<p><strong>使用AndroidStudio 3.2进行AppBundle的构建</strong></p>
+<p>AppBundle包含如下内容:</p>
+<p><img src="https://developer.android.com/images/app-bundle/aab_format-2x.png" alt="AppBundle"></p>
+<ul>
+<li><strong>base/, feature1/, and feature2/:</strong>这些文件夹分别代表着App里不同的模块,base模块是App里基础和通用的模块部分。Dynamic Feature作为灵活功能模块，被用来做动态加载</li>
+<li><strong>Protocol Buffer (*.pb) files:</strong>用于给应用商店提供描述appbundle一些metadata和一些配置说明,例如BundleConfig.pb是用来描述这个appbundle自身的信息；而像assets.pb、resourse.pb、native.pb等则是描述如何为特定的机型匹配资源和代码。</li>
+<li><strong>manifest/:</strong>用来保存不同module的AndroidManifest.xml文件</li>
+<li><strong>dex/:</strong>用来保存不同module下的dex文件</li>
+<li><strong>root/:</strong> 保存着一些通用的资源文件，例如动态加载的Java类文件等</li>
+</ul>
+<p><strong>BundleTool</strong></p>
+<p>打包appbundle和从apk提取apk的功能，都由Google提供的开源工具bundle tool执行，appbundle是一套开源的体系，意味着任何应用商店都可以去支持。</p>
+<p><a href="https://github.com/google/bundletool" target="_blank" rel="noopener">https://github.com/google/bundletool</a></p>
+<p>bundletool的职能有如下:</p>
+<ul>
+<li>构建Android AppBundle</li>
+<li>生成APK Set存档，包括给所有可能匹配的设备准备的APKs</li>
+<li>从APK Set中提取与给定设备匹配的APKs</li>
+<li>从APK Set中安装应用到连接的设备上（应用商店实现）</li>
+<li>从设备上提取出相关信息</li>
+</ul>
+<p>###Google逐步向InstantApp过渡的产物</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/06/AppBundle/" data-id="cjiws3dub0000pas6q4243pg5" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/04/08/内存泄露/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Viejo</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archivos</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Posts recientes</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/06/06/AppBundle/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/08/内存泄露/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/03/drawable资源相关/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/25/FFmpeg学习笔记/">FFmpeg学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/25/Android硬编码的学习和尝试/">Android硬编码的学习和尝试</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

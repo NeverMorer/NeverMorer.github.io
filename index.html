@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Buscar"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -60,6 +60,148 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-AppBundle" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/06/AppBundle/" class="article-date">
+  <time datetime="2018-06-06T15:56:32.000Z" itemprop="datePublished">2018-06-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#AppBundle</p>
+<p>###1.Dynamic Delivery Split APKs</p>
+<p>Split APKs的收益在于将一个包含所用代码和资源文件的大体积的Apk拆解开来，根据用户的设备按需加载相应的代码和资源文件。</p>
+<p>通过给GooglePlay提供配置参数和编译好的appbundle文件，GooglePlay会根据用户的设备下发适配用户手机的资源和模块，可区分的内容包括abi、屏幕分辨率、手机语言环境等。</p>
+<p><strong>支持API21以上的设备</strong></p>
+<p>Split APKs大致分为如下：</p>
+<ul>
+<li><strong>Base APK</strong>: 包含了App基本功能和通用模块的代码和资源，GooglePlay会根据App的主模块生成它，并在用户下载的时候首先下发。</li>
+<li><strong>Configuration APKs</strong>: 每一个Config APKs包含某一种CPU类型的native依赖，某一种语言资源包，和某一种像素密度下的资源文件。当用户下载的时候，会根据用户的设备信息选择一个匹配的Config APKs下载。</li>
+<li><strong>Dynaic feature APKs</strong>: 提供了一些非所有用户必须的功能模块的动态加载，以功能module为基础，在用户使用的时候，动态安装。</li>
+</ul>
+<p><img src="https://developer.android.com/images/app-bundle/apk_splits_tree-2x.png" alt="AppBundle"></p>
+<p><strong>如何让App支持Google Dynamic Delivery</strong></p>
+<p>首先，需要用户去构建一个包含所有代码和资源文件的实体，将打包和签名的过程交给GooglePlay，GP会使用你的app bundle去根据用户的设备信息，仅将适配的代码和资源进行打包并进行签名后下发给用户。</p>
+<p><strong>使用AndroidStudio 3.2进行AppBundle的构建</strong></p>
+<p>AppBundle包含如下内容:</p>
+<p><img src="https://developer.android.com/images/app-bundle/aab_format-2x.png" alt="AppBundle"></p>
+<ul>
+<li><strong>base/, feature1/, and feature2/:</strong>这些文件夹分别代表着App里不同的模块,base模块是App里基础和通用的模块部分。Dynamic Feature作为灵活功能模块，被用来做动态加载</li>
+<li><strong>Protocol Buffer (*.pb) files:</strong>用于给应用商店提供描述appbundle一些metadata和一些配置说明,例如BundleConfig.pb是用来描述这个appbundle自身的信息；而像assets.pb、resourse.pb、native.pb等则是描述如何为特定的机型匹配资源和代码。</li>
+<li><strong>manifest/:</strong>用来保存不同module的AndroidManifest.xml文件</li>
+<li><strong>dex/:</strong>用来保存不同module下的dex文件</li>
+<li><strong>root/:</strong> 保存着一些通用的资源文件，例如动态加载的Java类文件等</li>
+</ul>
+<p><strong>BundleTool</strong></p>
+<p>打包appbundle和从apk提取apk的功能，都由Google提供的开源工具bundle tool执行，appbundle是一套开源的体系，意味着任何应用商店都可以去支持。</p>
+<p><a href="https://github.com/google/bundletool" target="_blank" rel="noopener">https://github.com/google/bundletool</a></p>
+<p>bundletool的职能有如下:</p>
+<ul>
+<li>构建Android AppBundle</li>
+<li>生成APK Set存档，包括给所有可能匹配的设备准备的APKs</li>
+<li>从APK Set中提取与给定设备匹配的APKs</li>
+<li>从APK Set中安装应用到连接的设备上（应用商店实现）</li>
+<li>从设备上提取出相关信息</li>
+</ul>
+<p>###Google逐步向InstantApp过渡的产物</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/06/AppBundle/" data-id="cjiws3dub0000pas6q4243pg5" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-内存泄露" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/08/内存泄露/" class="article-date">
+  <time datetime="2018-04-08T12:30:06.000Z" itemprop="datePublished">2018-04-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###关于Android容易产生内存泄露的几种场景</p>
+<ul>
+<li>Handler的不规范使用:Runnable对象会持有外部Context引用</li>
+<li>被作为静态变量被其他对象持有</li>
+<li>内部类持有外部类引用</li>
+<li>被一些较长工作周期的对象持有(例如网络请求、异步IO)</li>
+<li>EditText会强引用Activity，包含两种可能Leak的情景: <ol>
+<li>没有及时remove TextWather()</li>
+<li>使用hint(目前无法定位具体原因)</li>
+<li>输入法导致的内存泄露:InputMethodManager持有了EditText的引用，进而持有了activity的引用导致的内存泄露</li>
+</ol>
+</li>
+<li>异步任务回调中对View或者Window对象的操作</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/08/内存泄露/" data-id="cjiws3dus0002pas6iqu2ogbj" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-drawable资源相关" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/03/drawable资源相关/" class="article-date">
+  <time datetime="2018-04-03T08:51:39.000Z" itemprop="datePublished">2018-04-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###Android中drawable资源相关知识</p>
+<ul>
+<li>png与jpg的区别在png支持alpha通道</li>
+<li>同等规格图像jpg格式大小要比png要小</li>
+</ul>
+<ul>
+<li>svg可缩放矢量图形是基于可扩展标记语言（标准通用标记语言的子集），用于描述二维矢量图形的一种图形格式。它由万维网联盟制定，是一个开放标准。</li>
+<li><p>svg在android应用场景：一些简单的图标可以使用AS的工具导入到项目中，优势：代码绘制保真度极高；占用体积小；修改灵活。</p>
+</li>
+<li><p>WebP格式，谷歌（google）开发的一种旨在加快图片加载速度的图片格式。图片压缩体积大约只有JPEG的2/3，并能节省大量的服务器带宽资源和数据空间。Facebook Ebay等知名网站已经开始测试并使用WebP格式。<br>但WebP是一种有损压缩。相较编码JPEG文件，编码同样质量的WebP文件需要占用更多的计算资源。</p>
+</li>
+<li><p>Webp在android中的应用场景，考虑到api18以下的手机不支持transparent的webp，所以大多数情景都是将无alpha通道的jpg图片进行压缩，压缩比高，建议使用AS自带的转换工具进行转换</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/03/drawable资源相关/" data-id="cjiws3duk0001pas6yj18uay5" class="article-share-link">Compartir</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-FFmpeg学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -103,7 +245,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/FFmpeg学习笔记/" data-id="cjcu7cyis00013qlixfqtfy4o" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/25/FFmpeg学习笔记/" data-id="cjiwrzjfx0000lts6rqnhcur1" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -175,7 +317,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/25/Android硬编码的学习和尝试/" data-id="cjcu7cyin00003qlisqqr2xjm" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/25/Android硬编码的学习和尝试/" data-id="cjiwrzjg10001lts6ewt5vj6o" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -213,7 +355,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/16/my-first-blog/" data-id="cjcu7cyiw00033qlia7mvjbmj" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/16/my-first-blog/" data-id="cjiwrzjg70003lts6l0nwu0km" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -258,7 +400,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/01/15/hello-world/" data-id="cjcu7cyiv00023qlivlo726j8" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2018/01/15/hello-world/" data-id="cjiwrzjg60002lts6oermyamr" class="article-share-link">Compartir</a>
       
       
     </footer>
@@ -284,9 +426,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archivos</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li></ul>
     </div>
   </div>
 
@@ -294,9 +436,21 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Posts recientes</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2018/06/06/AppBundle/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/08/内存泄露/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2018/04/03/drawable资源相关/">(no title)</a>
+          </li>
         
           <li>
             <a href="/2018/01/25/FFmpeg学习笔记/">FFmpeg学习笔记</a>
@@ -304,14 +458,6 @@
         
           <li>
             <a href="/2018/01/25/Android硬编码的学习和尝试/">Android硬编码的学习和尝试</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/16/my-first-blog/">my_first_blog</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/15/hello-world/">Hello World</a>
           </li>
         
       </ul>
@@ -327,7 +473,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Construido por <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
