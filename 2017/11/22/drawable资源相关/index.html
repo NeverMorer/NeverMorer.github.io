@@ -5,14 +5,19 @@
   
 
   
-  <title>Archiv: 2018/6 | Hexo</title>
+  <title>关于Android容易产生内存泄露的几种场景 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2018/06/index.html">
+  <meta name="description" content="Android中drawable资源相关知识 png与jpg的区别在png支持alpha通道 同等规格图像jpg格式大小要比png要小   svg可缩放矢量图形是基于可扩展标记语言（标准通用标记语言的子集），用于描述二维矢量图形的一种图形格式。它由万维网联盟制定，是一个开放标准。 svg在android应用场景：一些简单的图标可以使用AS的工具导入到项目中，优势：代码绘制保真度极高；占用体积小；修">
+<meta name="keywords" content="drawable">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于Android容易产生内存泄露的几种场景">
+<meta property="og:url" content="http://yoursite.com/2017/11/22/drawable资源相关/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Android中drawable资源相关知识 png与jpg的区别在png支持alpha通道 同等规格图像jpg格式大小要比png要小   svg可缩放矢量图形是基于可扩展标记语言（标准通用标记语言的子集），用于描述二维矢量图形的一种图形格式。它由万维网联盟制定，是一个开放标准。 svg在android应用场景：一些简单的图标可以使用AS的工具导入到项目中，优势：代码绘制保真度极高；占用体积小；修">
+<meta property="og:updated_time" content="2018-06-30T07:11:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="关于Android容易产生内存泄露的几种场景">
+<meta name="twitter:description" content="Android中drawable资源相关知识 png与jpg的区别在png支持alpha通道 同等规格图像jpg格式大小要比png要小   svg可缩放矢量图形是基于可扩展标记语言（标准通用标记语言的子集），用于描述二维矢量图形的一种图形格式。它由万维网联盟制定，是一个开放标准。 svg在android应用场景：一些简单的图标可以使用AS的工具导入到项目中，优势：代码绘制保真度极高；占用体积小；修">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -59,40 +64,75 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/30/AppBundle/" class="archive-article-date">
-  <time datetime="2018-06-30T02:40:10.000Z" itemprop="datePublished">Jun 30</time>
+        <section id="main"><article id="post-drawable资源相关" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/11/22/drawable资源相关/" class="article-date">
+  <time datetime="2017-11-22T07:52:01.000Z" itemprop="datePublished">2017-11-22</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/30/AppBundle/">AppBundle</a>
+    <h1 class="article-title" itemprop="name">
+      关于Android容易产生内存泄露的几种场景
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Android中drawable资源相关知识"><a href="#Android中drawable资源相关知识" class="headerlink" title="Android中drawable资源相关知识"></a>Android中drawable资源相关知识</h3><ul>
+<li>png与jpg的区别在png支持alpha通道</li>
+<li>同等规格图像jpg格式大小要比png要小</li>
+</ul>
+<ul>
+<li>svg可缩放矢量图形是基于可扩展标记语言（标准通用标记语言的子集），用于描述二维矢量图形的一种图形格式。它由万维网联盟制定，是一个开放标准。</li>
+<li><p>svg在android应用场景：一些简单的图标可以使用AS的工具导入到项目中，优势：代码绘制保真度极高；占用体积小；修改灵活。</p>
+</li>
+<li><p>WebP格式，谷歌（google）开发的一种旨在加快图片加载速度的图片格式。图片压缩体积大约只有JPEG的2/3，并能节省大量的服务器带宽资源和数据空间。Facebook Ebay等知名网站已经开始测试并使用WebP格式。<br>但WebP是一种有损压缩。相较编码JPEG文件，编码同样质量的WebP文件需要占用更多的计算资源。</p>
+</li>
+<li><p>Webp在android中的应用场景，考虑到api18以下的手机不支持transparent的webp，所以大多数情景都是将无alpha通道的jpg图片进行压缩，压缩比高，建议使用AS自带的转换工具进行转换</p>
+</li>
+</ul>
 
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/11/22/drawable资源相关/" data-id="cjj12jvik0001jfs6w1yfofc2" class="article-share-link">Teilen</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/drawable/">drawable</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/22/内存泄露/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          关于Android容易产生内存泄露的几种场景
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/09/my-first-blog/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">my_first_blog</div>
+    </a>
+  
+</nav>
+
+  
+</article>
 
 </section>
         
